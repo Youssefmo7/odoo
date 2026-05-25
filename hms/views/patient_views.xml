@@ -60,8 +60,9 @@
                                readonly="1"/>
 
                         <field name="doctor_ids"
-                               widget="many2many_tags"
-                               readonly="not department_id"/>
+                            widget="many2many_tags"
+                            readonly="not department_id"
+                            groups="hms.group_hms_manager"/>
 
                     </group>
 
@@ -129,6 +130,7 @@
         id="menu_hms_doctors"
         name="Doctors"
         parent="menu_hms_root"
-        action="doctor_action"/>
+        action="doctor_action"
+        groups="hms.group_hms_manager"/>
 
 </odoo>

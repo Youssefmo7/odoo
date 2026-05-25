@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="patient_user_rule"
+            model="ir.rule">
+
+        <field name="name">
+            Patient User Rule
+        </field>
+
+        <field name="model_id"
+               ref="model_hms_patient"/>
+
+        <field name="groups"
+               eval="[(4, ref('hms.group_hms_user'))]"/>
+
+        <field name="domain_force">
+            [('create_uid', '=', user.id)]
+        </field>
+
+    </record>
+
+</odoo>

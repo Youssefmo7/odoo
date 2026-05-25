@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <template id="patient_report_template">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs"
+               t-as="patient">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+
+                        <h2>
+                            Patient Status Report
+                        </h2>
+
+                        <p>
+                            <strong>Name:</strong>
+                            <span t-esc="patient.first_name"/>
+                            <span t-esc="patient.last_name"/>
+                        </p>
+
+                        <p>
+                            <strong>Age:</strong>
+                            <span t-esc="patient.age"/>
+                        </p>
+
+                        <p>
+                            <strong>Department:</strong>
+                            <span t-esc="patient.department_id.name"/>
+                        </p>
+
+                        <p>
+                            <strong>Doctors:</strong>
+
+                            <t t-foreach="patient.doctor_ids"
+                               t-as="doctor">
+
+                                <span t-esc="doctor.first_name"/>
+                                <span t-esc="doctor.last_name"/>
+
+                                <span>, </span>
+
+                            </t>
+
+                        </p>
+
+                        <p>
+                            <strong>Birth Date:</strong>
+                            <span t-esc="patient.birth_date"/>
+                        </p>
+
+                        <p>
+                            <strong>PCR:</strong>
+                            <span t-esc="patient.cr_ratio"/>
+                        </p>
+
+                        <p>
+                            <strong>Blood Type:</strong>
+                            <span t-esc="patient.blood_type"/>
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong>
+                            <span t-esc="patient.email"/>
+                        </p>
+
+                        <h3>
+                            User Date Info
+                        </h3>
+
+                        <p>
+                            <strong>Created By:</strong>
+                            <span t-esc="patient.create_uid.name"/>
+                        </p>
+
+                        <p>
+                            <strong>Create Date:</strong>
+                            <span t-esc="patient.create_date"/>
+                        </p>
+
+                        <h3>
+                            Log History
+                        </h3>
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+                                    <th>User</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr t-foreach="patient.log_ids"
+                                    t-as="log">
+
+                                    <td>
+                                        <span t-esc="log.created_by.name"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-esc="log.date"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-esc="log.description"/>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

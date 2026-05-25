@@ -65,6 +65,11 @@ class HMSPatient(models.Model):
         'patient_id'
     )
 
+    created_by = fields.Many2one(
+        'res.users',
+        default=lambda self: self.env.user
+    )
+
     @api.depends('birth_date')
     def _compute_age(self):
 
